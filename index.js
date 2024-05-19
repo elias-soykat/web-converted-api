@@ -8,6 +8,8 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (req, res) => res.json("Okay!"));
+
 app.get("/api/download", async (req, res) => {
   try {
     const url = req.query.url;
@@ -58,4 +60,3 @@ app.get("/api/file-download", async (req, res) => {
 
 const PORT = process.env.APP_PORT;
 app.listen(PORT, () => console.log(`app running at ${PORT}`));
-
