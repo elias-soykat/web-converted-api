@@ -5,10 +5,12 @@ const { formatBytes, itagToQuality } = require("./utils");
 require("dotenv").config();
 
 const app = express();
-app.use(cors());
+
+const origin = ["https://webconverted.com", "http://localhost:3000"];
+app.use(cors({ origin }));
 app.use(express.json());
 
-app.get("/", (req, res) => res.json("Okay!"));
+app.get("/api", (req, res) => res.json("Okay!"));
 
 app.get("/api/download", async (req, res) => {
   try {
