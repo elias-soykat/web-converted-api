@@ -1,3 +1,7 @@
+const sharp = require("sharp");
+const path = require('path');
+
+
 function formatBytes(bytes) {
   const k = 1024;
   const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
@@ -16,7 +20,14 @@ const itagToQuality = {
   38: "3072p",
 };
 
+const resizeImage = async (buffer, width, height, filename) => {
+  const outputPath = path.join(__dirname, "uploads", filename);
+  await sharp(buffer).resize(width, height).toFile(outputPath);
+  return { filename, path: outputPath };
+};
+
 module.exports = {
   formatBytes,
   itagToQuality,
+  resizeImage,
 };
