@@ -23,5 +23,5 @@ const storage = multer.memoryStorage();
 const upload = multer({ storage });
 app.post("/api/upload", upload.single("file"), imageFileUpload);
 
-const PORT = process.env.APP_PORT;
+const PORT = process.env.APP_PORT || 4000;
 app.listen(PORT, () => console.log(`app running at ${PORT}`));
